@@ -16,8 +16,8 @@ class HeatMap extends React.Component {
       let w=1200-margin.right-margin.left;
       let h=600-margin.top-margin.bottom;
       let xScale=d3.scaleLinear()
-                   .domain([1753,2015])
-                   .range(0,w);
+                   .domain(years)
+                   .range([0,w]);
 
       let yScale=d3.scaleTime()
                    .domain([new Date(2016,0,1), new Date(2016,11,31)])
@@ -40,7 +40,7 @@ class HeatMap extends React.Component {
 
       svg.append('g')
         .attr('class', 'axis')
-           .attr('transform', 'translate('+0+',0)')
+           .attr('transform', 'translate(0,0)')
            //.style('font-size', '15px')
            .call(d3.axisLeft(yScale)
                    .ticks(d3.timeMonth)
@@ -50,8 +50,9 @@ class HeatMap extends React.Component {
       svg.append('g')
          .attr('class', 'axis')
            .attr('transform', 'translate(0,'+h+')')
-           .style('font-size', '15px')           
-           .call(d3.axisBottom(xScale));
+           .call(d3.axisBottom(xScale)
+                  .ticks(19)
+            );
 
 
 
