@@ -1,3 +1,30 @@
+body{
+    background: url(http://cdn.backgroundhost.com/backgrounds/subtlepatterns/wood_pattern.png);
+}
 
+.heatmap{
+	text-align: center;
+	margin-top: 60px;
+};
 
-/*# sourceMappingURL=hstyles.css.map */
+.tooltip1 {
+        width: 130px;
+        height: auto;
+        padding: 5px;
+        //background-color: #b2b2b2;
+        background-color: black;
+        border-radius: 10px;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        pointer-events: none;
+        opacity: 0.8;        
+}
+
+svg{
+    background-color: white;
+    opacity: 1;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.year, .currentTemp, .variance{
+  color: white;
+}
