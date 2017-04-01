@@ -8,7 +8,7 @@ class HeatMap extends React.Component {
       const margin = {
         top: 90,
         right: 80,
-        bottom: 120,
+        bottom: 95,
         left: 80
       };
       let years = d3.extent(heatData, d => d.year); //[1753, 2015];
@@ -84,6 +84,7 @@ class HeatMap extends React.Component {
         .style('font-size', '12px')
         .call(d3.axisBottom(xScale)
           .ticks(19)
+          .tickFormat(d3.format("")) 
         );
 
       //setup legend data;
@@ -100,19 +101,21 @@ class HeatMap extends React.Component {
         .attr('x', (d, i) => 40 * i + (w - 40 * colors.length))
         .attr('y', h + 35)
         .attr('width', 40)
-        .attr('height', 20)
+        .attr('height', 40)
         .style('fill', (d, i) => colors[i]);
       //add text of legend;
 
       legend.append('text')
         .text(d => ((d * 1.8) + 32).toFixed(1))
+        //.attr('x', (d, i) => 40 * i + (w - 40 * colors.length) + 5)
+        //.attr('y', h + 77);
         .attr('x', (d, i) => 40 * i + (w - 40 * colors.length) + 5)
-        .attr('y', h + 77);
+        .attr('y', h + 50);
 
       legend.append('text')
         .text(d => d.toFixed(2))
         .attr('x', (d, i) => 40 * i + (w - 40 * colors.length) + 5)
-        .attr('y', h + 100);
+        .attr('y', h + 70);
 
       //add text for svg;
       svg.append('text')
@@ -128,18 +131,6 @@ class HeatMap extends React.Component {
         .attr('fill', 'black')
         .style('font-size', '0.85em')
         .text("Temperatures are in Fahrenheit/Celsius and reported as anomalies relative to the Jan 1951-Dec 1980 average. Estimated Jan 1951-Dec 1980 absolute temperature ℃: 8.66 +/- 0.07");
-
-      svg.append('text')
-        .attr("transform", "translate(" + ((w / 2) - 10) + " ," + (h + 77) + ")")
-        .style("text-anchor", "middle")
-        .attr('fill', 'black')
-        .text("Temperatures in Fahrenheit:");
-
-      svg.append('text')
-        .attr("transform", "translate(" + ((w / 2) - 21) + " ," + (h + 100) + ")")
-        .style("text-anchor", "middle")
-        .attr('fill', 'black')
-        .text("Temperatures in Celsius:");
     })
   }
 
