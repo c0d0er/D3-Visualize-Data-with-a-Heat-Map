@@ -1,6 +1,6 @@
 class HeatMap extends React.Component {
   componentDidMount() {
-    $.getJSON('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/global-temperature.json', (data) => {
+    $.getJSON('https://raw.githubusercontent.com/c0d0er/D3-Visualize-Data-with-a-Heat-Map/master/globeTemp.json', (data) => {
       let heatData = data.monthlyVariance;
       const baseTemp = data.baseTemperature;
       const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
